@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>36강 이상형 월드컵</title>
+    <title>박효신 앨범 이상형 월드컵</title>
 
     <link
       rel="icon"
@@ -29,17 +29,36 @@
     <!-- 사이트 대표 이미지 -->
 
     <style>
+      /* 전체 페이지 스타일 */
       body {
         font-family: "Arial", sans-serif;
         background-color: #f0f4f8;
         margin: 0;
         padding: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
       }
 
+      /* 상단 제목 스타일 */
+      .title {
+        font-size: 2.5em;
+        color: #4caf50;
+        text-align: center;
+        font-weight: bold;
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+      }
+
+      /* 상단에 이모지 추가 */
+      .title span {
+        font-size: 1.2em;
+      }
+
+      /* 이미지 컨테이너 스타일 */
       #container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -49,13 +68,7 @@
         margin-top: 30px;
       }
 
-      h2 {
-        text-align: center;
-        font-size: 2em;
-        margin-top: 20px;
-        color: #333;
-      }
-
+      /* 이미지 래퍼 디자인 */
       .image-wrapper {
         position: relative;
         display: flex;
@@ -73,6 +86,7 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       }
 
+      /* 이미지 스타일 */
       .image-wrapper img {
         width: 100%;
         height: auto;
@@ -89,6 +103,7 @@
         transform: scale(0.98);
       }
 
+      /* 결과 텍스트 스타일 */
       #result {
         text-align: center;
         font-size: 2em;
@@ -98,13 +113,18 @@
     </style>
   </head>
   <body>
+    <!-- 상단 제목 -->
+    <div class="title">
+      <span>🎶</span> 박효신 앨범 이상형 월드컵 <span>🎤</span>
+    </div>
+
     <div id="container"></div>
     <h2 id="result"></h2>
 
     <script>
       let files = Array.from({ length: 36 }, (_, i) =>
         String(i + 1).padStart(2, "0")
-      ); // 36개의 이미지 파일 이름
+      ); // 이미지 파일 이름을 '01', '02' 형태로 만들기
       let shuffled = [...files].sort(() => Math.random() - 0.5); // 순서 섞기
       const container = document.querySelector("#container");
       const resultText = document.querySelector("#result");
@@ -134,7 +154,7 @@
         imgWrapper.classList.add("image-wrapper");
 
         const img = document.createElement("img");
-        img.src = `images/${imageName}.jpg`; // 실제 이미지 경로를 `images/`로 지정
+        img.src = `images/${imageName}.jpg`; // 이미지 경로 `images/`로 지정
         img.alt = `이미지 ${imageName}`;
         img.addEventListener("click", () => {
           shuffled.unshift(imageName); // 클릭한 이미지를 상위에 추가
